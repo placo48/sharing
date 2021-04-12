@@ -34,14 +34,12 @@ def define_starting_df(n, Q00, Q01, Q02):
 def next_year(df, t, s0, s1, p0, p1, p2, k):
     row = [0, 0, 0]
     t = t + 1
-    print(df.iloc[t - 1][-2])
     row[0] = round(s0 * df.iloc[t - 1][-3])
     row[1] = round(s1 * df.iloc[t - 1][-2])
     row[2] = round(p2 * df.iloc[t - 1][-1] + p1 * df.iloc[t - 1][-2] + p0 * df.iloc[t - 1][-3]) + k
     size = len(df.columns)
     no_zeros = size - 3
     list_zeros = [0] * no_zeros
-    print(row)
     row = list_zeros + row
     df.loc[t] = row
     return df, t
